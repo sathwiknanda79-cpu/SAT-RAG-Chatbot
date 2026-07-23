@@ -2,7 +2,5 @@ venv/
 vectorstore/
 __pycache__/
 .env
-documents/""
-
-
-
+documents/
+.streamlit/secrets.toml

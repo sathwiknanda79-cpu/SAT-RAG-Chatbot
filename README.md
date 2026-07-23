@@ -1,70 +1,53 @@
-# SAT RAG 🤖
+# SAT RAG
 
-AI powered PDF chatbot using Retrieval Augmented Generation.
+An AI-powered PDF chatbot using retrieval-augmented generation (RAG).
 
 ## Features
 
 - Upload PDF documents
-- Ask questions from documents
-- Local LLM using Ollama
-- Vector search using ChromaDB
-- Beautiful Streamlit UI
+- Ask questions grounded in the uploaded document
+- Gemini API with your own key
+- Vector search with ChromaDB
+- Streamlit user interface
 
+## Technology
 
-## Tech Stack
-
-Frontend:
 - Streamlit
-
-AI:
-- Ollama
-- Llama 3.2
-
-RAG:
+- Google Gemini
 - LangChain
 - ChromaDB
+- Sentence Transformers embeddings
 
-Embeddings:
-- Sentence Transformers
+## Run locally
 
+Create and activate a virtual environment, then install dependencies:
 
-## Architecture
-
-PDF
-↓
-Text Extraction
-↓
-Chunking
-↓
-Embeddings
-↓
-Vector Database
-↓
-Retriever
-↓
-LLM
-↓
-Answer
-
-
-## How to Run
-
-
-Create environment:
-
+```powershell
 python -m venv venv
-
-
-Activate:
-
-venv\Scripts\activate
-
-
-Install:
-
+.\venv\Scripts\Activate.ps1
 pip install -r requirements.txt
+```
 
+Set your Gemini API key for the current PowerShell session:
 
-Run:
+```powershell
+$env:GEMINI_API_KEY="your-api-key"
+```
 
+Start the app:
+
+```powershell
 streamlit run app.py
+```
+
+## Deploy to Streamlit Community Cloud
+
+1. Push this project to GitHub. Do not upload `venv/` or your API key.
+2. Create an app at https://share.streamlit.io and select `app.py`.
+3. In **Advanced settings → Secrets**, add:
+
+```toml
+GEMINI_API_KEY = "your-api-key"
+```
+
+The deployed app receives a public `streamlit.app` URL and does not require your local computer or Ollama server to be running.
